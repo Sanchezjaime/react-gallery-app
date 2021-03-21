@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter,
   Route,
-  Switch
+  Switch,
 } from 'react-router-dom';
 import axios from 'axios';
 //App Components.
@@ -25,9 +25,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-
+    //performSearch function will be the default page
     this.performSearch();
-
+    //axios get method for each Navlink
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=ferrari&per_page=24&format=json&nojsoncallback=1`)
       .then((response) => {
         this.setState({
@@ -59,6 +59,7 @@ class App extends Component {
       });
   }
 
+  //perform search function is the default page with puppies set as default query
   performSearch = (query = 'puppies') => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then((response) => {
@@ -81,6 +82,7 @@ class App extends Component {
         </>
         <Switch>
           <Route exact path='/' render={ () => < PhotoContainer data={this.state.search}  /> }/>
+          <Route path='/search' render={ () => < PhotoContainer data={this.state.search}  /> }/>
           <Route path='/cars' render={ () => < PhotoContainer data={this.state.cars} /> }/>
           <Route path='/planes' render={ () => < PhotoContainer data={this.state.planes} /> }/>
           <Route path='/sushi' render={ () => < PhotoContainer data={this.state.sushi} /> }/>

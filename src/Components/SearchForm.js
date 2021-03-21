@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Nav from './Nav';
+import { withRouter } from "react-router";
 
-class SearchForm extends Component {
+class searchForm extends Component {
 
   state = {
     searchText: ''
@@ -15,6 +16,7 @@ class SearchForm extends Component {
     e.preventDefault();
     this.props.onSearch(this.state.searchText);
     e.currentTarget.reset();
+    this.props.history.push('search/${this.state.searchText}');
   }
 
   render() {
@@ -38,4 +40,5 @@ class SearchForm extends Component {
   }
 }
 
+const SearchForm = withRouter(searchForm);
 export default SearchForm;
