@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Nav from './Nav';
 import { withRouter } from "react-router";
 
 class searchForm extends Component {
@@ -18,7 +17,7 @@ class searchForm extends Component {
     e.currentTarget.reset();
     //code provided by Marie Ehrman TeamTreehouse
     //pushes query value to the history object
-    this.props.history.push('search/${this.state.searchText}');
+    this.props.history.push(`/search/${this.state.searchText}`);
   }
 
   render() {

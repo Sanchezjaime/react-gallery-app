@@ -1,7 +1,7 @@
 import React from 'react';
 import Photo from './Photo';
 import Nav from './Nav';
-import SearchForm from './SearchForm';
+
 
 const PhotoContainer = props => {
 
